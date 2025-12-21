@@ -337,9 +337,7 @@ runs:
           unset BB_BUILD_CHUNKED_OCI_MAX_LAYERS
         fi
 
-        RUN_SUDO=""
         if [ "${BB_RECHUNK}" = "true" ]; then
-          RUN_SUDO=1
           BUILD_OPTS+=("--rechunk")
         fi
 
@@ -347,8 +345,4 @@ runs:
           BUILD_OPTS+=("--retry-push" "--retry-count" "${BB_RETRY_PUSH_COUNT}")
         fi
 
-        if [ -n "$RUN_SUDO" ]; then
-          sudo -E bluebuild build -v "${BUILD_OPTS[@]}" "${RECIPE_PATH}"
-        else
-          bluebuild build -v "${BUILD_OPTS[@]}" "${RECIPE_PATH}"
-        fi
+        sudo -E bluebuild build -v "${BUILD_OPTS[@]}" "${RECIPE_PATH}"
