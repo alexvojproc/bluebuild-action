@@ -1,4 +1,4 @@
-name: "BlueBuild"
+name: "alex-bluebuild"
 description: "Build a custom OS image"
 inputs:
   recipe:
